@@ -6,12 +6,13 @@
     <style>
 
     </style>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 
 <body>
     <main>
     <div class="container">
-        <h1>Calculadora de Contrato</h1>
+        <h2>Calculadora Cancelamento por Data</h2>
         <label for="valorPlano">Valor da Mensalidade (R$):</label>
         <input type="valor" id="valorPlano" placeholder="Digite o valor do plano">
 
@@ -29,7 +30,9 @@
             <p>Quantidade de Dias: <span id="quantidadeDias">0</span></p>
         </div>
     </div>
-
+    <div id="botao-troca">
+        <button onclick="window.location.href='index.html'">Voltar</button>
+    </div>
     <script>
         function calcularValor() {
             let valorPlanoStr = document.getElementById("valorPlano").value;
@@ -48,9 +51,14 @@
             document.getElementById("valorProporcional").textContent = valorProporcional.toFixed(2);
             document.getElementById("multaRescisoria").textContent = multaRescisoria.toFixed(2);
             document.getElementById("quantidadeDias").textContent = diasContrato.toFixed(0);
+            
+            
         }
     </script>
     </main>
-</body>
 
+</body>
+<footer>
+    <p>Desenvolvido por Luan Eduardo</p>
+</footer>
 </html>

@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadores</title>
     <link rel="stylesheet" href="estilo.css">
+     
 </head>
 <body>
     <main>
         <div class="container">
-            <h1>Calculadora de Contrato</h1>
+            <h1>Calculadora de Cancelamento</h1>
             <label for="valorPlano">Valor da Mensalidade (R$):</label>
             <input type="valor" id="valorPlano" placeholder="Digite o valor do plano">
             <label for="dias">Quantidade de Dias Proporcionais Ativos:</label>
             <input type="number" id="dias" placeholder="Digite a quantidade de dias"><br><br>
 
             <button onclick="calcularValor()">Calcular</button>
-
+            
             <div id="resultado">
                 <p>Valor do Plano: R$ <span id="valorMensalidade">0,00</span></p>
                 <p>Valor Proporcional: R$ <span id="valorProporcional">0,00</span></p>
@@ -24,7 +25,10 @@
                 <p><span id="quantidadeDias"></span></p>
             </div>
         </div>
-
+        <div id="botao-troca">
+            <button onclick="window.location.href='calculadorCalendario.html'">Calcular com Calendário</button>
+        </div>
+        
         <script>
             function calcularValor() {
                
@@ -49,10 +53,8 @@
                 document.getElementById("quantidadeDias").textContent = `✌ Feito!`;
             }
         </script>
-    </main>
-    <footer>
-        <p>Desenvolvido por Luan Eduardo</p>
-    </footer>
 </body>
+<footer>
+    <p>Desenvolvido por Luan Eduardo</p>
+</footer>
 </html>
-
