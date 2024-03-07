@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculadora de Proporcional</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <main>
+    <div class="container">
+        <h1>Calculadora de Contrato</h1>
+        <label for="valorPlano">Valor da Mensalidade (R$):</label>
+        <input type="valor" id="valorPlano" placeholder="Digite o valor do plano">
+
+        <label for="dataInicial">Data da última fatura:</label>
+        <input type="date" id="dataInicial">
+
+        <label for="dataFinal">Último dia de utilização do serviço:</label>
+        <input type="date" id="dataFinal">
+
+        <button onclick="calcularValor()">Calcular</button>
+
+        <div id="resultado">
+            <p>Valor Proporcional: R$ <span id="valorProporcional">0,00</span></p>
+            <p>Multa Rescisória: R$ <span id="multaRescisoria">0,00</span></p>
+            <p>Quantidade de Dias: <span id="quantidadeDias">0</span></p>
+        </div>
+    </div>
+
+    <script>
+        function calcularValor() {
+            let valorPlanoStr = document.getElementById("valorPlano").value;
+    
+    // Substituir vírgulas por pontos para permitir números com vírgula
+    valorPlanoStr = valorPlanoStr.replace(",", ".");
+
+    const valorPlano = parseFloat(valorPlanoStr);
+            const dataInicial = new Date(document.getElementById("dataInicial").value);
+            const dataFinal = new Date(document.getElementById("dataFinal").value);
+
+            const diasContrato = (dataFinal - dataInicial) / (1000 * 60 * 60 * 24);
+            const valorProporcional = (valorPlano / 30) * diasContrato;
+            const multaRescisoria = valorPlano * 2;
+
+            document.getElementById("valorProporcional").textContent = valorProporcional.toFixed(2);
+            document.getElementById("multaRescisoria").textContent = multaRescisoria.toFixed(2);
+            document.getElementById("quantidadeDias").textContent = diasContrato.toFixed(0);
+        }
+    </script>
+    </main>
+</body>
+
+</html>
