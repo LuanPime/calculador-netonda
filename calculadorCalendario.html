@@ -28,6 +28,8 @@
             <p>Valor Proporcional: R$ <span id="valorProporcional">0,00</span></p>
             <p>Multa Rescisória: R$ <span id="multaRescisoria">0,00</span></p>
             <p>Quantidade de Dias: <span id="quantidadeDias">0</span></p>
+            <p id="infoAdicional"></p> <!-- Nova linha para a informação adicional -->
+
         </div>
     </div>
     <div id="botao-troca">
@@ -52,8 +54,15 @@
             document.getElementById("multaRescisoria").textContent = multaRescisoria.toFixed(2);
             document.getElementById("quantidadeDias").textContent = diasContrato.toFixed(0);
             
-            
+            // Exibir a informação adicional
+document.getElementById("infoAdicional").textContent = "Proporcional de " + diasContrato.toFixed(0) + " dias, referente a " + formatarData(dataInicial) + " até " + formatarData(dataFinal);
         }
+        function formatarData(data) {
+    const dia = String(data.getDate()).padStart(2, '0');
+    const mes = String(data.getMonth() + 1).padStart(2, '0');
+    const ano = data.getFullYear();
+    return dia + '/' + mes + '/' + ano;
+}
     </script>
     </main>
 
