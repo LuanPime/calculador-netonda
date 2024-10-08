@@ -25,16 +25,14 @@
             <button onclick="calcularValor()">Calcular</button>
 
             <div id="resultado">
-                <p>Valor Proporcional: R$ <span id="valorProporcional">0,00</span></p>
-                <p>Multa Rescisória: R$ <span id="multaRescisoria">0,00</span></p>
-                <p>Quantidade de Dias: <span id="quantidadeDias">0</span></p>
+                <p><b>Valor Proporcional:</b> R$ <span id="valorProporcional">0,00</span></p>
+                <p><b>Multa Rescisória:</b> R$ <span id="multaRescisoria">0,00</span></p>
+                <p><b>Quantidade de Dias:</b> <span id="quantidadeDias">0</span></p>
                 <p id="infoAdicional" style="text-transform: uppercase;"></p> <!-- Estilo adicionado para texto em caixa alta -->
 
             </div>
         </div>
-        <div id="botao-troca">
-            <button onclick="window.location.href='index.html'">Voltar</button>
-        </div>
+        
         <script>
             function calcularValor() {
                 let valorPlanoStr = document.getElementById("valorPlano").value;
