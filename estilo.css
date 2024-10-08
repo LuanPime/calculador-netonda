@@ -61,7 +61,21 @@ button {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    border-radius: 5px;  /* Arredondar os cantos */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  /* Adicionar sombra */
+    transition: background-color 0.3s ease, transform 0.2s ease;  /* Suavizar a transição */
 }
+
+button:hover {
+    background-color: #00356e;  /* Cor mais escura ao passar o mouse */
+    transform: translateY(-2px);  /* Elevar levemente o botão */
+}
+
+button:active {
+    transform: translateY(0);  /* Voltar ao normal ao clicar */
+}
+
+
 
 #resultado {
     margin-top: 10px;
