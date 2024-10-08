@@ -90,6 +90,15 @@ footer{
     margin-top: 10px;
 }
 
+.game-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#gameCanvas {
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
 /* Sticky Footer Classes */
 
 
