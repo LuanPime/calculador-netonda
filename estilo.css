@@ -75,8 +75,6 @@ button:active {
     transform: translateY(0);  /* Voltar ao normal ao clicar */
 }
 
-
-
 #resultado {
     margin-top: 10px;
     padding: 10px;
@@ -90,16 +88,20 @@ footer{
     margin-top: 10px;
 }
 
-.game-container {
-    text-align: center;
-    margin-top: 20px;
+/* Abaixo o Pong */
+
+#pong-game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000; /* Fundo do jogo */
 }
 
-#gameCanvas {
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
+#pongCanvas {
+    background: #222;
+    border: 2px solid #fff;
 }
-/* Sticky Footer Classes */
 
 
 
