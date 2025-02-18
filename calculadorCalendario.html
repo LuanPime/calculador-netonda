@@ -3,9 +3,6 @@
 
 <head>
     <title>Calculadora de Proporcional</title>
-    <style>
-
-    </style>
     <link rel="stylesheet" href="estilo.css">
 </head>
 
@@ -28,23 +25,46 @@
                 <p><b>Valor Proporcional:</b> R$ <span id="valorProporcional">0,00</span></p>
                 <p><b>Multa Rescisória:</b> R$ <span id="multaRescisoria">0,00</span></p>
                 <p><b>Quantidade de Dias:</b> <span id="quantidadeDias">0</span></p>
-                <p id="infoAdicional" style="text-transform: uppercase;"></p> <!-- Estilo adicionado para texto em caixa alta -->
-
+                <p id="infoAdicional" style="text-transform: uppercase;"></p>
             </div>
         </div>
-        
+
+        <div class="container">
+            <h2>Calculador de Proporcional</h2>
+            <div class="form-row">
+                <label for="mb1">Plano 1 (MB):</label>
+                <input type="number" id="mb1" placeholder="Ex: 50">
+
+                <label for="dias1">Dias:</label>
+                <input type="number" id="dias1" placeholder="Ex: 27">
+
+                <label for="valor1">Valor (R$):</label>
+                <input type="number" id="valor1" step="0.01" placeholder="Ex: 59.90">
+            </div>
+
+            <div class="form-row">
+                <label for="mb2">Plano 2 (MB):</label>
+                <input type="number" id="mb2" placeholder="Ex: 200">
+
+                <label for="dias2">Dias:</label>
+                <input type="number" id="dias2" placeholder="Ex: 3">
+
+                <label for="valor2">Valor (R$):</label>
+                <input type="number" id="valor2" step="0.01" placeholder="Ex: 69.90">
+            </div>
+
+            <button onclick="calcularProporcional()">Calcular</button>
+
+            <div id="resultadoProporcional" class="result" style="display: none;"></div>
+        </div>
+
         <script>
             function calcularValor() {
-                let valorPlanoStr = document.getElementById("valorPlano").value;
-        
-                // Substituir vírgulas por pontos para permitir números com vírgula
-                valorPlanoStr = valorPlanoStr.replace(",", ".");
-        
+                let valorPlanoStr = document.getElementById("valorPlano").value.replace(",", ".");
                 const valorPlano = parseFloat(valorPlanoStr);
                 const dataInicial = new Date(document.getElementById("dataInicial").value);
                 const dataFinal = new Date(document.getElementById("dataFinal").value);
                 
-                // Adicionar um dia à data final para incluir o último dia
                 const dataFinalIncluida = new Date(dataFinal);
                 dataFinalIncluida.setDate(dataFinalIncluida.getDate() + 1);
 
@@ -55,11 +75,30 @@
                 document.getElementById("valorProporcional").textContent = valorProporcional.toFixed(2);
                 document.getElementById("multaRescisoria").textContent = multaRescisoria.toFixed(2);
                 document.getElementById("quantidadeDias").textContent = diasContrato.toFixed(0);
-                
-                // Exibir a informação adicional
-                const novaDataInicial = new Date(dataInicial);
-                novaDataInicial.setDate(novaDataInicial.getDate() + 1);
-                document.getElementById("infoAdicional").textContent = "Proporcional de " + diasContrato.toFixed(0) + " dias, referente a " + formatarData(novaDataInicial) + " até " + formatarData(dataFinalIncluida);
+                document.getElementById("infoAdicional").textContent = "Proporcional de " + diasContrato.toFixed(0) + " dias, referente a " + formatarData(new Date(dataInicial)) + " até " + formatarData(dataFinalIncluida);
+            }
+            
+            function calcularProporcional() {
+                const mb1 = parseFloat(document.getElementById('mb1').value);
+                const dias1 = parseInt(document.getElementById('dias1').value);
+                const valor1 = parseFloat(document.getElementById('valor1').value);
+
+                const mb2 = parseFloat(document.getElementById('mb2').value);
+                const dias2 = parseInt(document.getElementById('dias2').value);
+                const valor2 = parseFloat(document.getElementById('valor2').value);
+
+                if (isNaN(mb1) || isNaN(dias1) || isNaN(valor1) || isNaN(mb2) || isNaN(dias2) || isNaN(valor2)) {
+                    alert('Por favor, preencha todos os campos corretamente.');
+                    return;
+                }
+
+                const proporcional1 = (dias1 / 30) * valor1;
+                const proporcional2 = (dias2 / 30) * valor2;
+                const valorTotal = (proporcional1 + proporcional2).toFixed(2);
+
+                const resultadoDiv = document.getElementById('resultadoProporcional');
+                resultadoDiv.style.display = 'block';
+                resultadoDiv.innerHTML = `Proporcional de ${dias1} dias no plano ${mb1}MB + ${dias2} dias no plano ${mb2}MB<br>Valor: R$ ${valorTotal}`;
             }
             
             function formatarData(data) {
@@ -68,7 +107,6 @@
                 const ano = data.getFullYear();
                 return dia + '/' + mes + '/' + ano;
             }
-          
         </script>
     </main>
 </body>
